@@ -1,3 +1,19 @@
+# Homework 5 -- ChatApp -- CSC 436: Web Applications
+
+The goal of this homework assignment is to extend the capabilites of the app from ngBook's ChatApp.  I am using ngBook8.  The code is from an earlier version so there are sercurity vulnerabilities that the book writers have not patched in later additions of the book.
+
+* Add a Login Component
+* Add an Authguard which blocks unauthorized users from navigating to the chat component.
+* Add firebase authentification
+
+## Implementation Details
+
+* The main route defaults to the login route which renders the login component.
+* When the user login fails / isunsuccessful, the chat component route is guarded from unauthorized users.
+* When the user would like to chat they click on an icon fixed to the bottom right corner.
+* When the user is done chatting they can click the fixed icon to toggle or hide the display of the chat component.
+
+
 <p align="center">
   <img src="src/assets/images/logos/Angular2RxJSChatHeaderImage.png" alt="Angular 2 RxJS Chat" width="500" height="300"/>
 </p>
@@ -168,5 +184,4 @@ This app is only one of several apps we have in the book. If you're looking to l
 
 ## License
  [MIT](/LICENSE.md)
-# csc436_hw5
-# csc436_hw5
+
