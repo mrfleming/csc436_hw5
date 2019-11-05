@@ -21,6 +21,7 @@ import { FromNowPipe } from './pipes/from-now.pipe';
 import {RouterModule, Routes} from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
+import { ToggleChatComponent } from './toggle-chat/toggle-chat.component';
 
 // evenetually add path:'' so it will redirect to the login component.
 const routes: Routes = [
@@ -40,13 +41,14 @@ const routes: Routes = [
     ChatPageComponent,
     FromNowPipe,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    ToggleChatComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule
+    RouterModule.forRoot(routes)
   ],
   providers: [
     MessagesService, ThreadsService, UsersService
