@@ -16,6 +16,13 @@ import { ChatWindowComponent } from './chat-window/chat-window.component';
 import { ChatPageComponent } from './chat-page/chat-page.component';
 import { FromNowPipe } from './pipes/from-now.pipe';
 
+
+// Addition imports to complete hw5
+import {RouterModule, Routes} from '@angular/router';
+import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,12 +32,15 @@ import { FromNowPipe } from './pipes/from-now.pipe';
     ChatThreadsComponent,
     ChatWindowComponent,
     ChatPageComponent,
-    FromNowPipe
+    FromNowPipe,
+    LoginComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    RouterModule
   ],
   providers: [
     MessagesService, ThreadsService, UsersService

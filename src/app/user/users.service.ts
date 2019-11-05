@@ -11,6 +11,9 @@ export class UsersService {
   // `currentUser` contains the current user
   currentUser: Subject<User> = new BehaviorSubject<User>(null);
 
+  // potentially adding a new service
+  // constructor(public service: OtherService){}
+
   public setCurrentUser(newUser: User): void {
     this.currentUser.next(newUser);
   }
