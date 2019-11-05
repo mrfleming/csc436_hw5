@@ -5,15 +5,10 @@ import { auth } from 'firebase/app';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 
+import { Observable, of } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 
-
-// my attempted fix
-import { Observable } from 'rxjs'; // removed reference to [of]
-// import { of } from 'rxjs/observable/of';
-import { switchMap } from 'rxjs/operator/switchMap'; // used to be 'rxjs/operator/switchMap'
-
-
-export interface User {
+interface User {
   uid: string;
   email: string;
   photoURL?: string;
@@ -21,8 +16,8 @@ export interface User {
   favoriteColor?: string;
 }
 
-// removed input to @Injectable { providedIn: 'root' }
-@Injectable()
+
+@Injectable({ providedIn: 'root' })
 export class AuthService {
 
   user: Observable<User>;
@@ -37,24 +32,24 @@ export class AuthService {
     this.user = this.afAuth.authState.pipe(
       switchMap(user => {
         if (user) {
-          return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
+          return this.afs.doc<User>(`users/${user.uid}`).valueChanges()
         } else {
-          return of(null);
+          return of(null)
         }
       })
-    );
+    )
   }
 
   googleLogin() {
-    const provider = new auth.GoogleAuthProvider();
+    const provider = new auth.GoogleAuthProvider()
     return this.oAuthLogin(provider);
   }
 
   private oAuthLogin(provider) {
     return this.afAuth.auth.signInWithPopup(provider)
       .then((credential) => {
-        this.updateUserData(credential.user);
-      });
+        this.updateUserData(credential.user)
+      })
   }
 
 
@@ -68,9 +63,9 @@ export class AuthService {
       email: user.email,
       displayName: user.displayName,
       photoURL: user.photoURL
-    };
+    }
 
-    return userRef.set(data, { merge: true });
+    return userRef.set(data, { merge: true })
 
   }
 

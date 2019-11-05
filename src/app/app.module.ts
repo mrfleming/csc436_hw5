@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+// import { HttpClientModule } from '@angular/http';
 
 import { UsersService } from './user/users.service';
 import { ThreadsService } from './thread/threads.service';
@@ -33,7 +33,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 
 import { AuthService } from './auth/auth.service';
-// import { AuthGuard } from './auth/auth-guard.guard';
+import { AuthGuard } from './auth/auth-guard.guard';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 // evenetually add path:'' so it will redirect to the login component.
 const routes: Routes = [
@@ -54,12 +55,13 @@ const routes: Routes = [
     FromNowPipe,
     LoginComponent,
     HomeComponent,
-    ToggleChatComponent
+    ToggleChatComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule,
+    //HttpClientModule,
     RouterModule.forRoot(routes),
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
