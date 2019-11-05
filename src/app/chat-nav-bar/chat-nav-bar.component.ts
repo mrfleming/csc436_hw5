@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { AuthService } from '../auth/auth.service';
 import {
   Component,
   Inject,
@@ -10,6 +12,7 @@ import { MessagesService } from './../message/messages.service';
 
 import { Thread } from './../thread/thread.model';
 import { Message } from './../message/message.model';
+import { combineLatest } from 'rxjs/operators';
 
 @Component({
   selector: 'chat-nav-bar',
@@ -20,15 +23,17 @@ export class ChatNavBarComponent implements OnInit {
   unreadMessagesCount: number;
 
   constructor(public messagesService: MessagesService,
-              public threadsService: ThreadsService) {
+    public threadsService: ThreadsService,
+    private authService: AuthService,
+    private router: Router) {
   }
 
   ngOnInit(): void {
     this.messagesService.messages
-      .combineLatest(
+      .pipe(combineLatest(
         this.threadsService.currentThread,
         (messages: Message[], currentThread: Thread) =>
-          [currentThread, messages] )
+          [currentThread, messages]))
 
       .subscribe(([currentThread, messages]: [Thread, Message[]]) => {
         this.unreadMessagesCount =
@@ -48,5 +53,10 @@ export class ChatNavBarComponent implements OnInit {
             },
             0);
       });
+  }
+
+  logout() {
+    this.authService.signOut();
+    this.router.navigate(['/login']);
   }
 }
