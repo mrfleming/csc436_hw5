@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+// import { Router } from '@angular/router';
 import { EmailService } from 'app/auth/email.service';
-import { auth } from 'firebase';
+// import { auth } from 'firebase';
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.component.html',
+  templateUrl: './login.component2.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {

@@ -1,0 +1,41 @@
+<div *ngIf="user | async; then authenticated else guest">
+    <!-- will replace with template in this div -->
+</div>
+
+
+<!-- User NOT logged in -->
+<ng-template #guest>
+    <h3>Howdy, GUEST</h3>
+    <p>You need to login with your username and password.</p>
+    <nav>
+        <a [routerLink]="['/home']">Test bypassing to Chat Home</a>
+        <br>
+    </nav>
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <div>
+            <label for="username">Username</label>
+            <input type="text" placeholder="username@email.com" formControlName="username">
+        </div>
+        <div>
+            <label for="password">Password</label>
+            <input type="password" placeholder="password" formControlName="password"
+                [formControl]="loginForm.controls['password']">
+        </div>
+        <div>
+            <button type="submit">Login</button>
+        </div>
+    </form>
+
+</ng-template>
+
+
+<!-- User logged in -->
+<ng-template #authenticated>
+    <div *ngIf="user | async as user">
+        <h3>Howdy, {{ user }}</h3>
+        <button class="red" (click)="logout()">Logout</button>
+    </div>
+    <div>
+        <button class="blue" [routerLink]="['/home']">Go To Chat</button>
+    </div>
+</ng-template>

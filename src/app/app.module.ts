@@ -35,8 +35,8 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from '../environments/environment';
 
 import { AuthService } from './auth/auth.service';
-import { EmailService } from './auth/email.service';
 import { AuthGuard } from './auth/auth-guard.guard';
+import { EmailService } from './auth/email.service';
 import { EmailGuard } from './auth/email.guard';
 
 // login calls the EmailLogin
@@ -47,8 +47,7 @@ const routes: Routes = [
   { path: 'userlogin', component: UserProfileComponent},
   { path: 'home', component: HomeComponent, canActivate: [EmailGuard]}
 ];
-// unblocks the route
-// , AuthGuard
+// unblocks the route , AuthGuard
 @NgModule({
   declarations: [
     AppComponent,
@@ -76,7 +75,7 @@ const routes: Routes = [
     AngularFireDatabaseModule
   ],
   providers: [
-    MessagesService, ThreadsService, UsersService, AuthService, EmailService, AuthGuard, EmailGuard
+    MessagesService, ThreadsService, UsersService, EmailService, EmailGuard// , AuthService, AuthGuard,
   ],
 
   bootstrap: [AppComponent]
