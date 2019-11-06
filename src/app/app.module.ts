@@ -38,15 +38,15 @@ import { environment } from '../environments/environment';
 import { AuthService } from './auth/auth.service';
 import { EmailService } from './auth/email.service';
 import { AuthGuard } from './auth/auth-guard.guard';
+import { EmailGuard } from './auth/email.guard';
 
-
-// login calls the GoogleLogin
-// userlogin calls the EmailLogin
+// login calls the EmailLogin
+// userlogin calls the GoogleLogin
 const routes: Routes = [
-  { path: '', redirectTo: 'userlogin', pathMatch: 'full'},
+  { path: '', redirectTo: 'login', pathMatch: 'full'},
   { path: 'login', component: LoginComponent},
   { path: 'userlogin', component: UserProfileComponent},
-  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] }
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard, EmailGuard]}
 ];
 
 @NgModule({
@@ -77,7 +77,7 @@ const routes: Routes = [
     AngularFireDatabaseModule
   ],
   providers: [
-    MessagesService, ThreadsService, UsersService, AuthService, EmailService
+    MessagesService, ThreadsService, UsersService, AuthService, EmailService, AuthGuard, EmailGuard
   ],
 
   bootstrap: [AppComponent]
