@@ -6,5 +6,18 @@
       <a [routerLink]="['/home']">Bypass to Home</a>
     </nav>
   </header>
+  <form [formGroup]="loginForm" (ngSubmit)="login()">
+    <div>
+      <label for="username">Username</label>
+      <input type="text" placeholder="username@email.com" formControlName="username">
+    </div>
+    <div>
+      <label for="password">Password</label>
+      <input type="password" placeholder="password" [formControl]="loginForm.controls['password']">
+    </div>
+    <div>
+      <button type="submit">Login</button>
+    </div>
+  </form>
 </section>
 
