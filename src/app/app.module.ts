@@ -23,7 +23,6 @@ import { FromNowPipe } from './pipes/from-now.pipe';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
-import { ToggleChatComponent } from './toggle-chat/toggle-chat.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 
 // Firebase stuff
@@ -46,9 +45,10 @@ const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full'},
   { path: 'login', component: LoginComponent},
   { path: 'userlogin', component: UserProfileComponent},
-  { path: 'home', component: HomeComponent, canActivate: [EmailGuard, AuthGuard ]}
+  { path: 'home', component: HomeComponent, canActivate: [EmailGuard]}
 ];
-
+// unblocks the route
+// , AuthGuard
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,7 +61,6 @@ const routes: Routes = [
     FromNowPipe,
     LoginComponent,
     HomeComponent,
-    ToggleChatComponent,
     UserProfileComponent
   ],
   imports: [
