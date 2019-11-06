@@ -1,31 +1,26 @@
-import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { tap, map, take } from 'rxjs/operators';
 import { EmailService } from './email.service';
 
+import { Injectable } from '@angular/core';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
+import { Observable } from 'rxjs/internal/Observable';
+import { take, map, tap } from 'rxjs/operators';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class EmailGuard implements CanActivate {
 
-  constructor(private auth: EmailService, private router: Router) { }
+  constructor(private authService: EmailService, private router: Router) { }
 
-  canActivate(
-    next: ActivatedRouteSnapshot,
+  canActivate(next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> {
-
-    return this.auth.user.pipe(
+    return this.authService.user.pipe(
       take(1),
-      map(user => !!user),
-      tap(loggedIn => {
+      map((user) => !!user),
+      tap((loggedIn) => {
         if (!loggedIn) {
-          console.log('access denied')
+          console.log('access denied');
           this.router.navigate(['/login']);
         }
       }),
-    )
+    );
   }
-
 }

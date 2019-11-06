@@ -9,11 +9,11 @@
   <form [formGroup]="loginForm" (ngSubmit)="login()">
     <div>
       <label for="username">Username</label>
-      <input type="text" placeholder="username@email.com" formControlName="username">
+      <input type="text" placeholder="username@email.com" formControlName="username" [formControl]="loginForm.controls['username']">
     </div>
     <div>
       <label for="password">Password</label>
-      <input type="password" placeholder="password" [formControl]="loginForm.controls['password']">
+      <input type="password" placeholder="password" formControlName="password" [formControl]="loginForm.controls['password']">
     </div>
     <div>
       <button type="submit">Login</button>

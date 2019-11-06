@@ -1,23 +1,30 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
+
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 
-// Shared user interface for login
-import { User } from './user.interface.model';
+interface User {
+  uid: string;
+  email: string;
+  photoURL?: string;
+  displayName?: string;
+  favoriteColor?: string;
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmailService {
-
   user: Observable<User>;
   message = '';
 
-  constructor(private firebaseAuth: AngularFireAuth, private router: Router) {
+  constructor(
+    private firebaseAuth: AngularFireAuth,
+    private router: Router
+  ) {
     this.user = firebaseAuth.authState;
-   }
-
+  }
 
   login(username: string, password: string) {
     this.firebaseAuth.auth
@@ -51,4 +58,5 @@ export class EmailService {
   isLoggedIn(): boolean {
     return !!this.getUser();
   }
+
 }
