@@ -22,6 +22,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { ToggleChatComponent } from './toggle-chat/toggle-chat.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 // Firebase stuff
 import { AngularFireModule } from '@angular/fire';
@@ -34,12 +35,14 @@ import { environment } from '../environments/environment';
 
 import { AuthService } from './auth/auth.service';
 import { AuthGuard } from './auth/auth-guard.guard';
-import { UserProfileComponent } from './user-profile/user-profile.component';
 
-// evenetually add path:'' so it will redirect to the login component.
+
+// login calls the GoogleLogin
+// userlogin calls the EmailLogin
 const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full'},
+  { path: '', redirectTo: 'userlogin', pathMatch: 'full'},
   { path: 'login', component: LoginComponent},
+  { path: 'userlogin', component: UserProfileComponent},
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] }
 ];
 
@@ -61,7 +64,6 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     FormsModule,
-    //HttpClientModule,
     RouterModule.forRoot(routes),
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
