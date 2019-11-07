@@ -1,5 +1,8 @@
 # Homework 5 -- ChatApp -- CSC 436: Web Applications
 
+https://github.com/mrfleming/csc436_hw5
+
+
 * Add a Login Component with Email Login and Google Login (which I thought I had to do...)
 * Add an Authguard which blocks unauthorized users from navigating to the chat component.
 * Chat show and hide feature enabled, click on the component in the bottom right corner.
