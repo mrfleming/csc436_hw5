@@ -5,37 +5,39 @@
 
 <!-- User NOT logged in -->
 <ng-template #guest>
-    <h3>Howdy, GUEST</h3>
-    <p>You need to login with your username and password.</p>
-    <nav>
-        <a [routerLink]="['/home']">Test bypassing to Chat Home</a>
-        <br>
-    </nav>
-    <form [formGroup]="loginForm" (ngSubmit)="login()">
-        <div>
-            <label for="username">Username</label>
-            <input type="text" placeholder="username@email.com" formControlName="username">
-        </div>
-        <div>
-            <label for="password">Password</label>
-            <input type="password" placeholder="password" formControlName="password"
-                [formControl]="loginForm.controls['password']">
-        </div>
-        <div>
-            <button type="submit">Login</button>
-        </div>
-    </form>
-
+    <section class="container box">
+        <header>
+            <h3 class="text-center">Chat App Login</h3>
+            <p>You need to login with your username and password.</p>
+        </header>
+        <form [formGroup]="loginForm" (ngSubmit)="login()">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input class="form-control" type="text" placeholder="username@email.com" formControlName="username">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input class="form-control" type="password" placeholder="password" formControlName="password"
+                    [formControl]="loginForm.controls['password']">
+            </div>
+            <div class="login-options">
+                <button id="email-login" class="btn-lg" type="submit">Login</button>
+                <button id="google-login" class="btn-lg" [routerLink]="['/googleLogin']">Google Auth</button>
+                <!-- <button id="hack" class="btn" [routerLink]="['/home']">Test bypassing to Chat Home</button> -->
+                
+            </div>
+        </form>
+    </section>
 </ng-template>
 
 
 <!-- User logged in -->
 <ng-template #authenticated>
-    <div *ngIf="user | async as user">
-        <h3>Howdy, {{ user }}</h3>
-        <button class="red" (click)="logout()">Logout</button>
-    </div>
-    <div>
-        <button class="blue" [routerLink]="['/home']">Go To Chat</button>
-    </div>
+    <section class="container">
+        <div *ngIf="user | async as user">
+            <h3>Howdy, {{ user }}</h3>
+            <button class="btn large-btn btn-primary" [routerLink]="['/home']">Go To Chat</button>
+            <button class="btn large-btn btn-primary" (click)="logout()">Logout</button>
+        </div>
+    </section>
 </ng-template>

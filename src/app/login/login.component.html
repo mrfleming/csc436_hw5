@@ -2,10 +2,6 @@
   <header>
     <h1>Login</h1>
     <p>You need to login with your username and password.</p>
-    <nav>
-      <a [routerLink]="['/home']">Test bypassing to Chat Home</a>
-      <br>
-    </nav>
   </header>
   <form [formGroup]="loginForm" (ngSubmit)="login()">
     <div>
@@ -18,6 +14,8 @@
     </div>
     <div>
       <button type="submit">Login</button>
+      <button [routerLink]="['/home']">Test bypassing to Chat Home</button>
+      <button [routerLink]="['/googleLogin']"></button>
     </div>
   </form>
 </section>

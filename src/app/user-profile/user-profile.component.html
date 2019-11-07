@@ -5,25 +5,31 @@
 
 <!-- User NOT logged in -->
 <ng-template #guest>
-    <h3>Howdy, GUEST</h3>
-    <p>Login to get started...</p>
-
-    <button (click)="auth.googleLogin()">
-        <i class="fa fa-google"></i> Connect Google
-    </button>
+   <section class="container box">
+        <h3>Google Authentification</h3>
+        <div class="center" >
+            <img style="width:75px;height:75px;" src="assets/images/logos/google-G.png" alt="google logo">
+        </div>
+        <p>Login with your Google Acount.</p>
+        <p>Permissions Enabled: STEAL ALL OF YOUR DATA ... jk</p>
+        
+        <button class="btn-lg" id="google-login" (click)="auth.googleLogin()">
+            <i class="fa fa-google"></i> Connect Google
+        </button>
+   </section>
 
 </ng-template>
 
 
 <!-- User logged in -->
 <ng-template #authenticated>
-    <div *ngIf="auth.user | async as user">
-        <h3>Howdy, {{ user.displayName }}</h3>
-        <img class="profilePic" [src]="user.photoURL">
-        <p>UID: {{ user.uid }}</p>
-        <button class="red" (click)="auth.signOut()">Logout</button>
-    </div>
-    <div>
-        <button class="blue" [routerLink]="['/home']">Go To Chat</button>
-    </div>
+    <section class="container box">
+        <div *ngIf="auth.user | async as user">
+            <h3>Howdy, {{ user.displayName }}</h3>
+            <img class="profilePic" [src]="user.photoURL">
+            <p>UID: {{ user.uid }}</p>
+            <button id="chat" [routerLink]="['/home']">Go To Chat</button>
+            <button id="logout" (click)="auth.signOut()">Logout</button>
+        </div>
+    </section>
 </ng-template>

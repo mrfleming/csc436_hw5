@@ -46,6 +46,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full'},
   { path: 'login', component: LoginComponent},
   { path: 'userlogin', component: UserProfileComponent},
+  { path: 'googleLogin', component: UserProfileComponent },
   { path: 'home', component: HomeComponent, canActivate: [EmailGuard]}
 ];
 // unblocks the route , AuthGuard

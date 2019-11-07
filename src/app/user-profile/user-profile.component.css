@@ -1,9 +1,31 @@
-.red{
-    background-color: red;
+body{
+    background-color: gray;
+}
+.container{
+    width:50%;
+    margin:0 auto;
+    padding-bottom: 16px;
+}
+.box{
+    border-radius:32px;
+    margin-top:128px;
 }
 
-.blue{
-    background-color: aqua;
+.center{
+    margin:0 auto;
+}
+
+#chat{
+    border: 1px solid #0276FD;
+}
+#chat:hover{
+    background-color: #0276FD
+}
+#logout,#google-login{
+    border: 1px solid crimson;
+}
+#logout:hover, #google-login:hover{
+    background-color: crimson
 }
 
 .profilePic{

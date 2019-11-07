@@ -1,9 +1,41 @@
 .container{
-    width:80%;
+    width:50%;
     margin:0 auto;
     padding-bottom: 16px;
     background-color: lightgray;
 }
+.box{
+    border-radius:32px;
+    margin-top:128px;
+}
+
 header{
     margin-bottom:8px;
+}
+.text-center{
+    text-align: center;
+}
+.login-options{
+    padding: 8px;
+
+}
+
+.login-options > button {
+    margin-right:8px;
+}
+#email-login{
+    border: 1px solid #0276FD;
+}
+#email-login:hover{
+    background-color: #0276FD
+}
+#google-login{
+    border: 1px solid crimson;
+}
+#google-login:hover{
+    background-color: crimson
+}
+
+#hack:hover{
+    background-color:goldenrod;
 }
