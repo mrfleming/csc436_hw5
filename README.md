@@ -1,17 +1,26 @@
 # Homework 5 -- ChatApp -- CSC 436: Web Applications
 
-The goal of this homework assignment is to extend the capabilites of the app from ngBook's ChatApp.  I am using ngBook8.  The code is from an earlier version so there are sercurity vulnerabilities that the book writers have not patched in later additions of the book.
-
-* Add a Login Component
+* Add a Login Component with Email Login and Google Login (which I thought I had to do...)
 * Add an Authguard which blocks unauthorized users from navigating to the chat component.
-* Add firebase authentification
+* Chat show and hide feature enabled, click on the component in the bottom right corner.
+* **Extra Credit** There is a logout button up top, which calls the service and logs you out of the app.  You cannot see the chat unless you log back in.
+
+The goal of this homework assignment is to extend the capabilites of the app from ngBook's ChatApp.  The code is from an earlier version (ngBook2 now on ngBook8) so there are sercurity vulnerabilities that the book writers have not patched in later additions of the book.  There were many problems with dependencies and I had to reserach how to update them without breaking the old project.
+
+## Route Details
+
+* **/**           --> redirects you to the /login route
+* **/login**     --> enter email and password **or** click the Google Signin button to use that account
+* **/userlogin**  --> This is an intermediate page to enter with your Google Account.
+* **/home**       --> This is where the chat app is rendered.  Blocked by the EmailGuard and the AuthGuard
 
 ## Implementation Details
-
 * The main route defaults to the login route which renders the login component.
-* When the user login fails / isunsuccessful, the chat component route is guarded from unauthorized users.
-* When the user would like to chat they click on an icon fixed to the bottom right corner.
-* When the user is done chatting they can click the fixed icon to toggle or hide the display of the chat component.
+* When the user login fails / isunsuccessful, the chat component route is guarded from unauthorized users using the EmailService and the AuthService.
+* If you login with your email address, the app communicates to Firebase with EmailService and EmailGuard.
+* If you login with your google account, the app communicates to Firebase with AuthService and AuthGuard.
+* I also made a 404 page if you type in routes that are not one of the four routes above.
+* For some of the forms I used a static ng-template to render different views.
 
 
 <p align="center">
