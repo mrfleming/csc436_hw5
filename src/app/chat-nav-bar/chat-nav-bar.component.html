@@ -6,6 +6,11 @@
          ng-book 2
       </a>
     </div>
+    <!-- Logout button -->
+    <p class="navbar-text navbar-right">
+      <button class="btn btn-danger" type="button" (click)="logout()">Logout</button>
+    </p>
+    <!-- Message count -->
     <p class="navbar-text navbar-right">
       <button class="btn btn-primary" type="button">
         Messages <span class="badge">{{ unreadMessagesCount }}</span>

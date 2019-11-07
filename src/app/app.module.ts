@@ -3,8 +3,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
-// import { HttpClientModule } from '@angular/http';
-
 import { UsersService } from './user/users.service';
 import { ThreadsService } from './thread/threads.service';
 import { MessagesService } from './message/messages.service';
@@ -34,8 +32,11 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 
 import { environment } from '../environments/environment';
 
+// For Google Account Authentification
 import { AuthService } from './auth/auth.service';
 import { AuthGuard } from './auth/auth-guard.guard';
+
+// For Email Account Authentification
 import { EmailService } from './auth/email.service';
 import { EmailGuard } from './auth/email.guard';
 
@@ -75,7 +76,7 @@ const routes: Routes = [
     AngularFireDatabaseModule
   ],
   providers: [
-    MessagesService, ThreadsService, UsersService, EmailService, EmailGuard// , AuthService, AuthGuard,
+    MessagesService, ThreadsService, UsersService, EmailService, EmailGuard, AuthService, AuthGuard,
   ],
 
   bootstrap: [AppComponent]
