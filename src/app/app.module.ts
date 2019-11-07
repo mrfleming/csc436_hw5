@@ -22,6 +22,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 // Firebase stuff
 import { AngularFireModule } from '@angular/fire';
@@ -40,6 +41,7 @@ import { AuthGuard } from './auth/auth-guard.guard';
 import { EmailService } from './auth/email.service';
 import { EmailGuard } from './auth/email.guard';
 
+
 // login calls the EmailLogin
 // userlogin calls the GoogleLogin
 const routes: Routes = [
@@ -47,7 +49,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'userlogin', component: UserProfileComponent},
   { path: 'googleLogin', component: UserProfileComponent },
-  { path: 'home', component: HomeComponent, canActivate: [EmailGuard]}
+  { path: 'home', component: HomeComponent, canActivate: [EmailGuard]},
+  { path: '**', component: PageNotFoundComponent },
 ];
 // unblocks the route , AuthGuard
 @NgModule({
@@ -62,7 +65,8 @@ const routes: Routes = [
     FromNowPipe,
     LoginComponent,
     HomeComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
